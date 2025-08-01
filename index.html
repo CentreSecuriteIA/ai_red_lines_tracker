@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Red Lines Tracker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .tooltip {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            border-radius: 6px;
+            z-index: 10;
+            width: 250px;
+            font-size: 0.875rem;
+            line-height: 1.4;
+        }
+        .progress-bar-container:hover .tooltip {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <h1 class="text-3xl font-bold leading-tight text-gray-900">AI Red Lines Tracker</h1>
+            <p class="mt-1 text-md text-gray-600">Standardized Metrics for Public Monitoring of AI's Unacceptable Risks</p>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        <div class="px-4 py-6 sm:px-0">
+            
+            <!-- Introduction -->
+            <div class="bg-white rounded-lg shadow p-6 mb-8">
+                <h2 class="text-2xl font-semibold text-gray-900 mb-3">About the Tracker</h2>
+                <p class="text-gray-700 leading-relaxed">
+                    The AI Red Lines Tracker is a public platform designed to monitor how close frontier AI models are to breaching "unacceptable risk" thresholds. Our core objective is to translate abstract catastrophic AI risks into concrete, measurable indicators. This provides a standardized framework for public and regulatory oversight, fostering a greater understanding of the capabilities of advanced AI systems. This proof of concept is based on publicly available information and established frameworks from leading AI labs.
+                </p>
+            </div>
+
+            <!-- Risk Categories -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                <!-- CBRN Risk -->
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h3 class="text-xl font-semibold mb-1">CBRN Risk</h3>
+                    <p class="text-sm text-gray-500 mb-4">Chemical, Biological, Radiological, & Nuclear threats.</p>
+                    <div class="progress-bar-container relative">
+                        <div class="w-full bg-gray-200 rounded-full h-6">
+                            <div class="bg-yellow-500 h-6 rounded-full" style="width: 70%"></div>
+                            <div class="absolute top-0 left-0 h-6 w-full flex items-center justify-center text-sm font-medium text-white">
+                                Capability Uplift: 3.5x
+                            </div>
+                        </div>
+                        <div class="absolute top-0 h-6 border-r-4 border-red-600" style="left: 80%;"></div>
+                        <div class="tooltip" style="left: 81%; top: -50px;">
+                            <strong>Red Line: 5x Uplift</strong><br>
+                            Defined by Anthropic's Responsible Scaling Policy as an unacceptable risk threshold. At this level, an AI model significantly boosts a user's ability to acquire and use harmful biological agents.
+                        </div>
+                    </div>
+                     <p class="text-xs text-gray-500 mt-2 text-right">Red Line at 5x Uplift</p>
+                </div>
+
+                <!-- Cyber Risk -->
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h3 class="text-xl font-semibold mb-1">Cybersecurity Risk</h3>
+                    <p class="text-sm text-gray-500 mb-4">Executing large-scale cyberattacks or finding zero-day vulnerabilities.</p>
+                    <div class="progress-bar-container relative">
+                        <div class="w-full bg-gray-200 rounded-full h-6">
+                            <div class="bg-orange-500 h-6 rounded-full" style="width: 85%"></div>
+                             <div class="absolute top-0 left-0 h-6 w-full flex items-center justify-center text-sm font-medium text-white">
+                                Throughput Uplift: 85% Cost Reduction
+                            </div>
+                        </div>
+                        <div class="absolute top-0 h-6 border-r-4 border-red-600" style="left: 90%;"></div>
+                         <div class="tooltip" style="left: 91%; top: -50px;">
+                            <strong>Red Line: 90% Cost Reduction</strong><br>
+                            An AI enabling a 90% reduction in the cost of sophisticated cyberattacks would dramatically lower the barrier for malicious actors, representing an unacceptable risk.
+                        </div>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-2 text-right">Red Line at 90% Cost Reduction</p>
+                </div>
+
+                <!-- Misalignment / Loss of Control -->
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h3 class="text-xl font-semibold mb-1">Loss of Control</h3>
+                    <p class="text-sm text-gray-500 mb-4">Autonomous replication, self-improvement, and deception.</p>
+                    <div class="progress-bar-container relative">
+                        <div class="w-full bg-gray-200 rounded-full h-6">
+                            <div class="bg-purple-500 h-6 rounded-full" style="width: 40%"></div>
+                             <div class="absolute top-0 left-0 h-6 w-full flex items-center justify-center text-sm font-medium text-white">
+                                Deception Score: 40%
+                            </div>
+                        </div>
+                        <div class="absolute top-0 h-6 border-r-4 border-red-600" style="left: 75%;"></div>
+                        <div class="tooltip" style="left: 76%; top: -50px;">
+                            <strong>Red Line: 75% Deception Score</strong><br>
+                           Models that can reliably deceive human operators in a variety of situations pose a critical risk for maintaining meaningful human control.
+                        </div>
+                    </div>
+                     <p class="text-xs text-gray-500 mt-2 text-right">Red Line at 75%</p>
+                </div>
+
+                 <!-- Autonomy -->
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h3 class="text-xl font-semibold mb-1">Autonomy</h3>
+                    <p class="text-sm text-gray-500 mb-4">Acquiring resources and operating in the wild without oversight.</p>
+                    <div class="progress-bar-container relative">
+                        <div class="w-full bg-gray-200 rounded-full h-6">
+                            <div class="bg-teal-500 h-6 rounded-full" style="width: 25%"></div>
+                            <div class="absolute top-0 left-0 h-6 w-full flex items-center justify-center text-sm font-medium text-white">
+                                Autonomous Task Score: 25%
+                            </div>
+                        </div>
+                        <div class="absolute top-0 h-6 border-r-4 border-red-600" style="left: 60%;"></div>
+                        <div class="tooltip" style="left: 61%; top: -50px;">
+                            <strong>Red Line: 60% Autonomous Task Score</strong><br>
+                            A model capable of autonomously accomplishing 60% of a complex, multi-step goal like "start a business" would demonstrate dangerous levels of autonomy.
+                        </div>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-2 text-right">Red Line at 60%</p>
+                </div>
+            </div>
+
+            <!-- Historical Trend Analysis -->
+            <div class="bg-white rounded-lg shadow p-6 mt-8">
+                <h3 class="text-2xl font-semibold text-gray-900 mb-4">Historical Trend Analysis: CBRN Risk</h3>
+                <p class="text-gray-600 mb-4">This chart illustrates the progression of AI capabilities over time, tracking how different model versions are closing the gap to the red line. This temporal context is crucial for understanding the rate of progress and the urgency of the risks.</p>
+                <canvas id="historicalTrendChart"></canvas>
+            </div>
+            
+            <!-- Doomsday Clock -->
+            <div class="bg-red-800 text-white rounded-lg shadow-lg p-8 mt-8 text-center">
+                <h3 class="text-3xl font-bold mb-4">The "Doomsday Clock" for AI</h3>
+                <p class="text-lg max-w-3xl mx-auto mb-4">
+                    This feature, currently in a conceptual phase, will translate abstract capability scores into concrete, quantitative risk estimates. By modeling potential real-world harm, such as economic damage or expected lives lost, we can provide an intuitive, public-facing indicator of the current societal risk level posed by AI.
+                </p>
+                <div class="text-6xl font-mono font-bold tracking-widest">
+                    <span>5</span>
+                    <span class="animate-pulse">:00</span>
+                    <span>MINUTES TO MIDNIGHT</span>
+                </div>
+                 <p class="text-sm mt-4 opacity-80">Representation of concept. Not a live calculation.</p>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white">
+        <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 text-center text-gray-500">
+             <p>&copy; 2025 Centre pour la Sécurité de l’IA (CeSIA)</p>
+        </div>
+    </footer>
+
+    <script>
+        // Chart.js for Historical Trend
+        const ctx = document.getElementById('historicalTrendChart').getContext('2d');
+        const historicalTrendChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Claude 1.0', 'Claude 2.0', 'Claude 3 Sonnet', 'Claude 3 Opus', 'Future Model (Est.)'],
+                datasets: [{
+                    label: 'Capability Uplift',
+                    data: [1.2, 2.1, 2.8, 3.5, 4.5],
+                    borderColor: 'rgb(234, 179, 8)',
+                    backgroundColor: 'rgba(234, 179, 8, 0.1)',
+                    fill: true,
+                    tension: 0.1
+                }, {
+                    label: 'Red Line',
+                    data: [5, 5, 5, 5, 5],
+                    borderColor: 'rgb(220, 38, 38)',
+                    borderDash: [5, 5],
+                    fill: false,
+                    pointRadius: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'CBRN Capability Uplift (x)'
+                        }
+                    },
+                    x: {
+                         title: {
+                            display: true,
+                            text: 'Model Version'
+                        }
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
